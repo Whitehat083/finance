@@ -40,9 +40,15 @@ Plataforma web com backend Flask + frontend React para ensinar finanças de form
 - Alerta para gastos altos em lazer (>20% da renda no período).
 - Usuários autenticados só acessam endpoints financeiros.
 
-## Como rodar
+## Como rodar (passo a passo)
 
-### Backend
+### Pré-requisitos
+
+- Python **3.10+**
+- Node.js **18+**
+- npm **9+**
+
+### 1) Subir o backend
 
 ```bash
 cd backend
@@ -52,7 +58,17 @@ pip install -r requirements.txt
 python app.py
 ```
 
-### Frontend
+Backend ficará em: `http://localhost:5000`
+
+Opcional (segredo JWT em ambiente):
+
+```bash
+export JWT_SECRET="troque-este-segredo-em-producao"
+```
+
+### 2) Subir o frontend
+
+Em outro terminal:
 
 ```bash
 cd frontend
@@ -60,9 +76,22 @@ npm install
 npm run dev
 ```
 
-## Testes
+Frontend ficará em: `http://localhost:5173`
+
+### 3) Fluxo rápido para testar
+
+1. Acesse o frontend em `http://localhost:5173`.
+2. Faça cadastro/login (o backend já expõe endpoints JWT).
+3. Cadastre transações e metas para popular o dashboard.
+4. Teste o simulador de metas e a trilha de módulos.
+
+## Testes automatizados
 
 ```bash
 cd backend && pytest
 cd frontend && npm test
 ```
+
+## Observação sobre este ambiente
+
+Se `pip install` ou `npm install` falhar com erro de rede/proxy (ex.: `403 Forbidden`), rode o projeto em uma rede com acesso ao PyPI/npm ou configure o proxy corporativo localmente.
